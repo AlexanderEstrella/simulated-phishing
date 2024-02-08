@@ -8,12 +8,11 @@
 </head>
 
 <body>
-    <h1> This is a simulated phishing test from (Companyname)</h1>
+    <h1> This is a simulated phishing test from Acumen</h1>
     <h2> Please watch this video to prevent this from happening</h2>
     <button id="button"> Go to Youtube</button>
 </body>
 <script>
-let count = 0;
 
 async function trackClick(para) {
     // Send a request to your server
@@ -23,7 +22,7 @@ async function trackClick(para) {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ clicked: true, count: count })
+            body: JSON.stringify({ clicked: true, name: para  })
         });
         if (!response.ok) {
             throw new Error('Failed to track click');
@@ -36,10 +35,12 @@ async function trackClick(para) {
 
 // Adding event listener to the button element
 document.getElementById("button").addEventListener('click', async () => { 
-    count++;
-    await trackClick(count);
+   
+    const name = window.location.pathname.split('/')[1]; // Extract name from URL
+    await trackClick(name);
     window.location.href = "https://youtu.be/o0btqyGWIQw?si=w7F7JYbsxWjLifB2";
 }); // Added closing curly brace here
 
 </script>
 </html>
+
