@@ -54,9 +54,8 @@ console.log("Logged Entry from: ", name);
 
 });
 
-
-
 });
+
 
 
 
@@ -68,10 +67,10 @@ app.post('/track-click', (req, res) => {
         const dateTime = now.toLocaleString();
         const clientIP = req.ip;
         if (req.body.name != "") {
-         
+
             console.log(JSON.stringify(req.body.name), "user watched the video");
 
-         
+
         } else {
             console.log(clientIP, "user watched the video")
         }
@@ -104,3 +103,4 @@ app.post('/track-click', (req, res) => {
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
+
